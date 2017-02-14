@@ -1,0 +1,28 @@
+{
+  "name": "pdfserver",
+  "version": "1.0.0",
+  "description": "A Node.js service for generating PDFs based on a document templates. Powered by pdfmake (http://pdfmake.org/) and Mustache (https://mustache.github.io/)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-windows-service": "winser -i",
+    "uninstall-windows-service": "winser -r"
+  },
+  "author": "Julian Hidalgo - julian.hidalgo@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "1.5.0",
+    "chart.js": "2.3.0",
+    "getconfig": "^3.0.0",
+    "hapi": "^13.5.3",
+    "inert": "^4.1.0",
+    "jsdom": "9.5.0",
+    "lodash": "^4.17.4",
+    "memorystream": "^0.3.1",
+    "mustache": "^2.3.0",
+    "pdfmake": "^0.1.25",
+    "winser": "^1.0.2",
+    "winston": "^2.3.1"
+  }
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>PDF Service v2</title>
+  <meta name="description" content="Bouvet PDF Service v2">
+  <meta name="author" content="SitePoint">
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+	<form method="POST" action="/build-report-from-template">
+		<div>
+			Title:
+			<input type="text" name="title" value="daily-vessel-report.pdf">
+		</div>
+		<div>
+			Template Name:
+			<input type="text" name="templateName" value="DailyVesselReport">
+		</div>
+		<div>
+			Sub Template Names:
+			<input type="text" name="subTemplateNames" value="[]">
+		</div>
+		<div>
+			Data:
+			<textarea name="data" cols="200" rows="30">[]</textarea>
+		</div>
+		<div>
+			<input type="submit" value="Render">
+		</div>
+	</form>
+</body>
+</html>
