@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "canvas": "1.5.0",
-    "chart.js": "2.3.0",
+    "chart.js": "^2.5.0",
     "getconfig": "^3.0.0",
     "hapi": "^16.1.0",
     "inert": "^4.1.0",

@@ -29,7 +29,6 @@ module.exports = function() {
     };
 
     return {
-        renderPDF,
-        renderPDFv2
+        renderPDF
     };
 }

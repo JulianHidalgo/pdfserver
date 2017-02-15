@@ -6,7 +6,7 @@ const winston = require('winston'),
       logger = new (winston.Logger)({
             transports: [
                 new (winston.transports.Console)(),
-                new (winston.transports.File)({ filename: './pdfservice.log' })
+                new (winston.transports.File)({ filename: './pdfserver.log' })
             ]});
 const server = new Hapi.Server();
 server.connection({
