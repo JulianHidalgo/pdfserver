@@ -1,0 +1,1 @@
+echo -ne "\033]0;PDF Server\007"
