@@ -5,13 +5,19 @@ sudo npm install -g node-gyp
 sudo yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel
 
 http://serverfault.com/questions/720558/how-to-install-gcc-5-2-on-centos-7-1
-/* Apt-get
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt-get update
-sudo apt-get install gcc-5.1 g++-5.1
-sudo rm /bin/usr/g++
-sudo ln -s /usr/bin/g++-5 /usr/bin/g++
-*/
+
+https://www.vultr.com/docs/how-to-install-gcc-on-centos-6
+sudo yum install svn texinfo-tex flex zip libgcc.i686 glibc-devel.i686
+svn co svn://gcc.gnu.org/svn/gcc/tags/gcc_6_3_0_release/
+cd gcc_6_3_0_release/
+./contrib/download_prerequisites
+cd ..
+mkdir gcc_6_3_0_release_build/
+cd gcc_6_3_0_release_build/
+../gcc_6_3_0_release/configure && make && sudo make install && echo "success"
+echo "/usr/local/lib64" > usrLocalLib64.conf
+sudo mv usrLocalLib64.conf /etc/ld.so.conf.d/
+sudo ldconfig
 
 mkdir /code
 sudo chown -R apexteam /code/
