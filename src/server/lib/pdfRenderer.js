@@ -1,6 +1,11 @@
 'use strict';
 
-process.chdir(__dirname);
+const path = require('path'),
+      fs = require('fs');
+
+// Change to the parent folder so the requires work
+let currentPath = path.join(__dirname, '..');
+process.chdir(currentPath);
 
 const fonts        = require('../layout/fonts'),
       PdfPrinter   = require('pdfmake'),
@@ -13,9 +18,6 @@ let _ = require('lodash');
 
 const Mustache = require('mustache');
 
-const path = require('path'),
-      fs = require('fs');
-
 const styles       = require('../layout/styles');
 const tableLayouts = require('../layout/tableLayouts');
 const options      = { tableLayouts: tableLayouts };
@@ -27,11 +29,14 @@ module.exports = function() {
     let templates = {};
     function loadTemplates() {
 
-        for (let templateDef of Config.templateFolders) {
-            let templatesPath = path.join(__dirname, templateDef.directory);
+        for (let templateDef of Config.templateDirectories) {
+            let templatesPath = templateDef.directory;
+            // If the directory is not an absolute path, we assume is relative to the parent 
+            if (!path.isAbsolute(templateDef.directory)) {
+                templatesPath = path.join(currentPath, templateDef.directory);
+            }            
             let files = fs.readdirSync(templatesPath);
             files = _.filter(files, (file) => { return _.endsWith(file, '.template'); });
-            console.log(files);
             for (let file of files) {
                 let templateKey = templateDef.prefix + _.upperFirst(_.camelCase(file.replace('.template', '')));
                 templates[templateKey] = fs.readFileSync( path.join(templatesPath, file), 'utf8');

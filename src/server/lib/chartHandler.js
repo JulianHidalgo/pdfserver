@@ -30,6 +30,10 @@ module.exports = function() {
 					let canvas = new Canvas (chartDefinition.width, chartDefinition.height)
 		 			let ctx = canvas.getContext('2d');
 
+		 			/*global.HTMLCanvasElement = function HTMLCanvasElement() {};
+		 			ctx.prototype = HTMLCanvasElement.prototype;
+		 			global['CanvasRenderingContext2D'] = ctx;//canvas.Context2d;*/
+
 					let Chart = require('chart.js');
 
 					// Avoid the creation of an iframe for the chart
