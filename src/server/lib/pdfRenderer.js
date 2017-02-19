@@ -1,5 +1,7 @@
 'use strict';
 
+process.chdir(__dirname);
+
 const fonts        = require('../layout/fonts'),
       PdfPrinter   = require('pdfmake'),
       printer      = new PdfPrinter(fonts),
