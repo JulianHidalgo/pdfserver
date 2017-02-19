@@ -5,13 +5,14 @@ const fonts        = require('../layout/fonts'),
       printer      = new PdfPrinter(fonts),
       MemoryStream = require('memorystream');
 
+const Config = require('getconfig');
+
 let _ = require('lodash');
 
 const Mustache = require('mustache');
 
 const path = require('path'),
-      fs = require('fs'),
-      templatesPath = path.join(__dirname, '../templates/');
+      fs = require('fs');
 
 const styles       = require('../layout/styles');
 const tableLayouts = require('../layout/tableLayouts');
@@ -24,12 +25,15 @@ module.exports = function() {
     let templates = {};
     function loadTemplates() {
 
-        let files = fs.readdirSync(templatesPath);
-        files = _.filter(files, (file) => { return _.endsWith(file, '.template'); });
-        
-        for (let file of files) {
-            let templateKey = _.upperFirst(_.camelCase(file.replace('.template', '')));
-            templates[templateKey] = fs.readFileSync( path.join(templatesPath, file), 'utf8');
+        for (let templateDef of Config.templateFolders) {
+            let templatesPath = path.join(__dirname, templateDef.directory);
+            let files = fs.readdirSync(templatesPath);
+            files = _.filter(files, (file) => { return _.endsWith(file, '.template'); });
+            console.log(files);
+            for (let file of files) {
+                let templateKey = templateDef.prefix + _.upperFirst(_.camelCase(file.replace('.template', '')));
+                templates[templateKey] = fs.readFileSync( path.join(templatesPath, file), 'utf8');
+            }
         }
 
     }
