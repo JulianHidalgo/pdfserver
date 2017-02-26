@@ -1,3 +1,6 @@
+Install service on CentOS
+=========================
+
 https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora
 sudo curl --silent --location https://rpm.nodesource.com/setup_7.x | sudo bash -
 sudo yum install -y nodejs
@@ -5,6 +8,7 @@ sudo npm install -g node-gyp
 sudo yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel
 
 http://serverfault.com/questions/720558/how-to-install-gcc-5-2-on-centos-7-1
+
 
 https://www.vultr.com/docs/how-to-install-gcc-on-centos-6
 sudo yum install svn texinfo-tex flex zip libgcc.i686 glibc-devel.i686

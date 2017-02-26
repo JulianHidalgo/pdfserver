@@ -12,14 +12,12 @@ as
   JHI     14.02.2017  Created
  
   */
-  
-  m_service_url constant appl_param.param_value%type := appl_param_pkg.get_param_string('pdf_service_url', 'http://localhost:3000/'); 
-
 
 function render_pdf_from_template (p_title in varchar2,
                                    p_data in clob,
                                    p_main_template in varchar2,
-                                   p_sub_templates in varchar2 := '[]'
+                                   p_service_url in varchar2,
+                                   p_sub_templates in varchar2 := '[]'                                   
                                    ) return blob
 as
   l_http_headers            wwv_flow_global.vc_arr2;
@@ -60,7 +58,7 @@ begin
   apex_web_service.g_request_headers(1).name := 'Content-Type';
   apex_web_service.g_request_headers(1).value :=  'application/x-www-form-urlencoded';
   l_returnvalue := apex_web_service.make_rest_request_b(
-    p_url               => m_service_url||'build-report-from-template',
+    p_url               => p_service_url||'build-report',
     p_http_method       => 'POST',
     p_body              => l_body,
     p_parm_name         => apex_util.string_to_table('Content-Type'),

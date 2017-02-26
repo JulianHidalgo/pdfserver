@@ -22,7 +22,8 @@ as
   function render_pdf_from_template (p_title in varchar2,
                                      p_data in clob,
                                      p_main_template in varchar2,
-                                     p_sub_templates in varchar2 := '[]'
+                                     p_service_url in varchar2,
+                                     p_sub_templates in varchar2 := '[]'                                     
                                      ) return blob;
  
  
