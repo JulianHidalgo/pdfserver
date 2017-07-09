@@ -32,7 +32,11 @@ npm -g install npm@next
 Install as service on Windows
 -----------------------------
 Run as admin:
+
+```
 npm run install-windows-service
+
+```
 
 Other remarks
 -------------
